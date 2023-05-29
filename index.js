@@ -20,6 +20,8 @@ const app = express()
 app.use(express.static("public"))
 app.use(express.json())
 
+console.log({ WHITELIST })
+
 // Implement CORS
 const corsOptions = {
   origin: function (origin, callback) {
@@ -30,6 +32,7 @@ const corsOptions = {
     }
   },
   credentials: true,
+  preflightContinue: true,
 }
 app.use(cors(corsOptions))
 
@@ -39,6 +42,10 @@ app.use(cors(corsOptions))
 // const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY)
 
 const stripe = new Stripe(STRIPE_SECRET_KEY)
+
+app.get("/", (req, res) => {
+  res.send({ message: "Hello World" })
+})
 
 app.get("/config", (req, res) => {
   res.send({

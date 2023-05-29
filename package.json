@@ -3,14 +3,14 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "main": "server.js",
+  "main": "index.js",
   "keywords": [
     "portfolio",
     "backend",
     "stripe"
   ],
   "scripts": {
-    "start": "node server.js"
+    "start": "node index.js"
   },
   "dependencies": {
     "@stripe/react-stripe-js": "^2.1.0",

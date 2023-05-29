@@ -1,0 +1,39 @@
+{
+    "version": 2,
+    "builds": [
+        {
+            "src": "index.js",
+            "use": "@vercel/node"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/",
+            "dest": "/index.js",
+            "methods": [
+                "GET"
+            ]
+        },
+        {
+            "src": "/config",
+            "dest": "/index.js",
+            "methods": [
+                "GET"
+            ]
+        },
+        {
+            "src": "/create-payment-intent",
+            "dest": "/index.js",
+            "methods": [
+                "POST"
+            ]
+        },
+        {
+            "src": "/webhook",
+            "dest": "/index.js",
+            "methods": [
+                "POST"
+            ]
+        }
+    ]
+}
