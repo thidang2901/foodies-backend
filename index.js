@@ -12,7 +12,7 @@ const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY
 const STRIPE_PUBLISHABLE_KEY = process.env.STRIPE_PUBLISHABLE_KEY
 
 const ALLOWED_DOMAINS = process.env.CORS_DOMAINS || ""
-const WHITELIST = ALLOWED_DOMAINS.split(",").map((item) => item.trim())
+const APP_DOMAIN = process.env.APP_DOMAIN
 
 // const express = require("express")
 // Initial app with ExpressJS
@@ -21,16 +21,23 @@ app.use(express.static("public"))
 app.use(express.json())
 
 // Implement CORS
-const corsOptions = {
-  origin: function (origin, callback) {
-    if (WHITELIST.indexOf(origin) !== -1 || !origin) {
-      callback(null, true)
-    } else {
-      callback(new Error("Not allowed by CORS"))
-    }
-  },
-}
-app.use(cors(corsOptions))
+// const corsOptions = {
+//   origin: function (origin, callback) {
+//     if (WHITELIST.indexOf(origin) !== -1 || !origin) {
+//       callback(null, true)
+//     } else {
+//       callback(new Error("Not allowed by CORS"))
+//     }
+//   },
+// }
+// app.use(cors(corsOptions))
+app.use(
+  cors({
+    origin: '*',
+  })
+)
+
+console.log({ ALLOWED_DOMAINS, APP_DOMAIN })
 
 // This is a public sample test API key.
 // Don’t submit any personally identifiable information in requests made with this key.
