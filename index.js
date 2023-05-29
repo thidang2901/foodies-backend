@@ -34,10 +34,10 @@ app.use(express.json())
 app.use(
   cors({
     origin: "*",
+    credentials: true,
+    optionSuccessStatus: 200,
   })
 )
-
-console.log({ ALLOWED_DOMAINS, APP_DOMAIN })
 
 // This is a public sample test API key.
 // Don’t submit any personally identifiable information in requests made with this key.
