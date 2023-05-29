@@ -20,19 +20,15 @@ const app = express()
 app.use(express.static("public"))
 app.use(express.json())
 
-console.log({ WHITELIST })
-
 // Implement CORS
 const corsOptions = {
   origin: function (origin, callback) {
-    if (!origin || WHITELIST.indexOf(origin) !== -1) {
+    if (WHITELIST.indexOf(origin) !== -1 || !origin) {
       callback(null, true)
     } else {
       callback(new Error("Not allowed by CORS"))
     }
   },
-  credentials: true,
-  preflightContinue: true,
 }
 app.use(cors(corsOptions))
 
